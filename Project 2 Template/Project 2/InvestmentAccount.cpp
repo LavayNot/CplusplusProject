@@ -19,7 +19,8 @@ InvestmentAccount::InvestmentAccount(double initialAmount, double annualInterest
 	monthlyDeposit = monthlyDeposit;
 
 }
- // calculates balance  
+ // calculates balance after interest and adding monthly deposits
+// @returns balance
 double InvestmentAccount::getEndingBalance(int numberOfYears) {
 	double endingBalance = initialAmount;
 	for (int year = 1; year <= numberOfYears; ++year) {
@@ -31,36 +32,37 @@ double InvestmentAccount::getEndingBalance(int numberOfYears) {
 	return endingBalance;
 }
 
-// interest earned 
+// calculates interest earned by subtracting maxdeposit from ending balance
+// @returns interest earned 
 double InvestmentAccount::getInterestEarned(int numberOfYears) {
 	double maxDeposit = (initialAmount + monthlyDeposit) * ((annualInterestRate/100)/12);
-	double endingBalance = getEndingBalance(numberOfYears);
+	double endingBalance = getEndingBalance(numberOfYears); 
 	
-	return endingBalance - maxDeposit;
+	return endingBalance - maxDeposit; 
 }
-
+// @returns formatted roundedBalance 2 places 
 std::string InvestmentAccount::getEndingBalanceFormatted(int numberOfYears) {
 	double endingBalance = getEndingBalance(numberOfYears);
 	double roundedBalance = round(endingBalance, 2);
 	
 	return format(roundedBalance);
 }
-
+// @returns formatted roundedInterest 2 decimal places
 std::string InvestmentAccount::getInterestEarnedFormatted(int numberOfYears) {
 	double earnedInterest = getInterestEarned(numberOfYears);
 	double roundedInterest = round(earnedInterest, 2);
 
 	return format(roundedInterest);
 }
-
+// @returns initial amount invested 
 double InvestmentAccount::getInitialAmount() {
 	return initialAmount;
 }
-
+//@returns monthly deposited into account 
 double InvestmentAccount::getMonthlyDeposit() {
 	return monthlyDeposit;
 }
-
+//@returns interest rate
 double InvestmentAccount::getAnnualInterestRate() {
 	return annualInterestRate;
 }
