@@ -51,11 +51,12 @@ int main() {
     
     return 0;
 }
+// outputs year, endingbalance and interest for both accounts
 void displayOutput(InvestmentAccount accountNoDeposit, InvestmentAccount accountWithDeposit, int numberOfYears) {
     cout << "==========================================================" << endl;
     cout << "Year Year End Balance Interest Earned " << endl;
     cout << "----------------------------------------------------------" << endl;
-    for (int year = 1; year <= numberOfYears; ++year) {
+    for (int year = 1; year <= numberOfYears; ++year) { // increases by increments of 1 until it reaches numberOfYears
         cout << year << accountNoDeposit.getEndingBalanceFormatted(year) << accountNoDeposit.getInterestEarnedFormatted(year) << endl;
         cout << year << accountWithDeposit.getEndingBalanceFormatted(year) << accountWithDeposit.getInterestEarnedFormatted(year) << endl;
     }
